@@ -1,0 +1,15 @@
+<nav>
+    <mat-toolbar color="primary">
+        <button mat-flat-button color="accent" routerLink="/"> BANANA MOVE </button>
+        <button mat-button routerLink="/products"> Products </button>
+        <button mat-button routerLink="/feedback"> Feedback </button>
+        <button mat-button routerLink="/about-us"> About Us </button>
+        
+        <button mat-button routerLink="/cart"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent" matBadgeSize="small">shopping_cart</mat-icon> </button>
+
+        <span class="spacer"></span>
+
+        <button mat-button routerLink="/login"> Login </button>
+        <button mat-button routerLink="/register"> Register </button>
+    </mat-toolbar>
+</nav>
