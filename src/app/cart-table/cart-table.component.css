@@ -1,0 +1,18 @@
+.mat-column-product {
+    width: 300px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.mat-column-quantity {
+    width: 30%;
+    padding: 0 20px;
+}
+
+.mat-form-field {
+    width: 25%;
+}
+
+tr.mat-footer-row td, th {
+    font-weight: bold;
+  }

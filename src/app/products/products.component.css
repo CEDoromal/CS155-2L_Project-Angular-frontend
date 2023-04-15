@@ -1,0 +1,22 @@
+mat-grid-list {
+    margin: 30px;
+}
+
+mat-card {
+    height: 90%;
+    width: 90%;
+}
+
+mat-card-content {
+    height: 20%;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: right;
+}
+
+img {
+    height: 65%;
+    object-fit: cover;
+}

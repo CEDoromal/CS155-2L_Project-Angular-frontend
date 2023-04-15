@@ -15,15 +15,15 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   public addAccount(account: Account): Observable<Account> {
-    return this.http.post<Account>("/accounts/add", account, this.httpOptions);
+    return this.http.post<Account>("/api/accounts/add", account, this.httpOptions);
   }
 
   public updateAccount(account: Account): Observable<any> {
-    return this.http.put("/accounts/update", account, this.httpOptions);
+    return this.http.put("/api/accounts/update", account, this.httpOptions);
   }
 
   public deleteAccount(id: number): void {
-    const url = `/accounts/delete/${id}`;
+    const url = `/api/accounts/delete/${id}`;
     this.http.delete(url);
   }
 
@@ -32,6 +32,6 @@ export class AccountService {
       username: user,
       password: pass
     };
-    return this.http.post<Account>("/accounts/login", credentials, this.httpOptions);
+    return this.http.post<Account>("/api/accounts/login", credentials, this.httpOptions);
   }
 }

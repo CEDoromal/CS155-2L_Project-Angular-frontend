@@ -1,0 +1,28 @@
+<mat-grid-list cols="5" rowHeight="3:4.5" gutterSize="30px">
+    <div *ngIf="products.length === 0; else elseBlock">
+        <!--
+            <mat-card>
+                <mat-card-content>
+                    <span>Sorry! There are no available products at the moment.</span>
+                    <span>Please try again later...</span>
+                </mat-card-content>
+            </mat-card>
+        -->
+    </div>
+    <ng-template #elseBlock>
+    <mat-grid-tile *ngFor="let product of products">
+        <mat-card>
+        <img mat-card-image src="./assets/images/{{product.image}}">
+        <mat-card-content>
+            <mat-card-title>{{product.name}}</mat-card-title>
+            <mat-card-subtitle>PHP {{product.price}}.00</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" (click)="addToCart(product)"> Add To Cart </button>
+        </mat-card-actions>
+        </mat-card>
+    </mat-grid-tile>
+    </ng-template>
+</mat-grid-list>
+
+<!--<button mat-flat-button (click)="addToCart(products[1])"> addToCart </button>-->

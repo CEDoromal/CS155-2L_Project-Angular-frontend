@@ -15,24 +15,24 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   public addProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>("/products/add", product, this.httpOptions);
+    return this.http.post<Product>("/api/products/add", product, this.httpOptions);
   }
 
   public updateProduct(product: Product): Observable<any> {
-    return this.http.put("/products/update", product, this.httpOptions);
+    return this.http.put("/api/products/update", product, this.httpOptions);
   }
 
   public deleteProduct(id: number): void {
-    const url = `/products/delete/${id}`;
+    const url = `/api/products/delete/${id}`;
     this.http.delete(url);
   }
 
   public getProduct(id: number): Observable<Product> {
-    const url = `/products/${id}`;
+    const url = `/api/products/${id}`;
     return this.http.get<Product>(url);
   }
 
   public getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>("/products");
+    return this.http.get<Product[]>("/api/products");
   }
 }
