@@ -34,4 +34,8 @@ export class AccountService {
     };
     return this.http.post<Account>("/api/accounts/login", credentials, this.httpOptions);
   }
+
+  public getAllAccounts(): Observable<Account[]> {
+    return this.http.get<Account[]>("/api/accounts", this.httpOptions);
+  }
 }

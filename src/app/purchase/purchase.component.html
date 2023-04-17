@@ -1,0 +1,51 @@
+<div id="cart-div">
+    <mat-stepper linear>
+        <mat-step label="Edit Cart" [completed]="cart.length>0 || !isEditable" [editable]="isEditable">
+            <h2>Cart</h2>
+            <div *ngIf="cart.length>0; else elseBlock">
+                <app-edit-cart></app-edit-cart>
+                <div class="stepper-action-container">
+                    <button mat-raised-button color="accent" matStepperNext>Next</button>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <span>Please add items to cart first</span>
+            </ng-template>
+        </mat-step>
+        <mat-step [stepControl]="orderDetails" label="Fill out order details" [editable]="isEditable">
+            <form [formGroup]="orderDetails">
+                <h2>Order Details</h2>
+                <mat-form-field appearance="fill">
+                    <mat-label> Full Name </mat-label>
+                    <input matInput formControlName="fullName" [(ngModel)]="fullName" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label> Address </mat-label>
+                    <input matInput formControlName="address" [(ngModel)]="address" required>
+                </mat-form-field>
+                <h3>Payment Option</h3>
+                <mat-radio-group formControlName="paymentMethod" [(ngModel)]="paymentMethod" required>
+                    <mat-radio-button value="Cash On Delivery"> Cash On Delivery </mat-radio-button>
+                    <mat-radio-button value="GCash"> GCash </mat-radio-button>
+                    <mat-radio-button value="Maya"> Maya </mat-radio-button>
+                    <mat-radio-button value="Visa"> Visa </mat-radio-button>
+                    <mat-radio-button value="Mastercard"> Mastercard </mat-radio-button>
+                </mat-radio-group>
+                <div class="stepper-action-container">
+                    <button mat-raised-button color="accent" (click)="placeOrder()" matStepperNext>Place Order</button>
+                    <button mat-raised-button matStepperPrevious>Back</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step label="Done!" [editable]="isEditable">
+            <h2> Order Received! </h2>
+            <h3> Full Name: {{orderDetails.controls["fullName"].value || ""}} </h3>
+            <h3> Address: {{orderDetails.controls["address"].value || ""}} </h3>
+            <h3> Payment Method: {{orderDetails.controls["paymentMethod"].value || ""}} </h3>
+            <app-cart-table [cart]="cartCopy"></app-cart-table>
+            <div class="stepper-action-container">
+                <button mat-raised-button color="accent" routerLink="/products">Buy More</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>

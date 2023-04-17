@@ -8,18 +8,20 @@
             </mat-card-header>
 
             <mat-card-content>
-                <mat-form-field>
-                    <mat-label>Username</mat-label>
-                    <input matInput>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Password</mat-label>
-                    <input type="password" matInput>
-                </mat-form-field>
+                <form [formGroup]="loginForm">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input formControlName="username" matInput required>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input formControlName="password" type="password" matInput required>
+                    </mat-form-field>
+                </form>
             </mat-card-content>
 
             <mat-card-actions>
-                <button mat-raised-button color="accent"> Login </button>
+                <button mat-raised-button color="accent" (click)="login()"> Login </button>
             </mat-card-actions>
         </mat-card>
     </mat-grid-tile>

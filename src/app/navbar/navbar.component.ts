@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
+import { AuthService } from '../auth.service';
+import { Account } from '../model/account';
 
 @Component({
   selector: 'app-navbar',
@@ -8,21 +10,25 @@ import { CartService } from '../cart.service';
 })
 export class NavbarComponent implements OnInit {
 
-  badgeContent: number;
+  loggedAccount: Account|null = null;
+  badgeContent: number = 0;
 
-  constructor(private cartService: CartService) {
-    this.badgeContent = 0;
+  constructor(private cartService: CartService, private authService: AuthService) {
     this.cartService.cart$
       .subscribe(cart => {
-        this.badgeContent = 0;
-        cart.forEach(item => {
-          this.badgeContent += item[1];
-        });
+        this.badgeContent = cart.map(item => item[1])
+        .reduce((acc, value) => acc + value, 0);
       });
+    this.authService.loggedAccount$
+      .subscribe(loggedAccount => this.loggedAccount = loggedAccount);
   }
 
   ngOnInit(): void {
   }
 
-  
+  logout(): void {
+    this.cartService.updateCart([]);
+    this.authService.setLoggedAccount(null);
+  }
+
 }

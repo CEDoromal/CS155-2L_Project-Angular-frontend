@@ -6,11 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProductsComponent } from './products/products.component';
-import { ShippingComponent } from './shipping/shipping.component';
-import { PaymentComponent } from './payment/payment.component';
 import { FeedbackComponent } from './feedback/feedback.component';
-import { ContactComponent } from './contact/contact.component';
-import { ReceiptComponent } from './receipt/receipt.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -19,7 +15,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
-import { CartComponent } from './cart/cart.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -29,26 +24,29 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatStepperModule } from '@angular/material/stepper';
-import { CartTableComponent } from './cart-table/cart-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderFormComponent } from './order-form/order-form.component';
+import { EditCartComponent } from './edit-cart/edit-cart.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { CartTableComponent } from './cart-table/cart-table.component';
+import { PurchaseComponent } from './purchase/purchase.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     ProductsComponent,
-    ShippingComponent,
-    PaymentComponent,
     FeedbackComponent,
-    ContactComponent,
-    ReceiptComponent,
     HomeComponent,
     LoginComponent,
     RegisterComponent,
     FooterComponent,
     AboutUsComponent,
-    CartComponent,
-    CartTableComponent
+    OrderFormComponent,
+    EditCartComponent,
+    CartTableComponent,
+    PurchaseComponent
   ],
   imports: [
     HttpClientModule,
@@ -66,7 +64,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatTableModule,
     MatStepperModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatRadioModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

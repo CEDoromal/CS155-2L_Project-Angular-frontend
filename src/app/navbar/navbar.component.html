@@ -5,11 +5,16 @@
         <button mat-button routerLink="/feedback"> Feedback </button>
         <button mat-button routerLink="/about-us"> About Us </button>
         
-        <button mat-button routerLink="/cart"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent" matBadgeSize="small">shopping_cart</mat-icon> </button>
+        <button mat-button routerLink="/purchase"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent" matBadgeSize="small">shopping_cart</mat-icon> </button>
 
         <span class="spacer"></span>
 
+        <div *ngIf="!loggedAccount; else logoutBlock">
         <button mat-button routerLink="/login"> Login </button>
         <button mat-button routerLink="/register"> Register </button>
+        </div>
+        <ng-template #logoutBlock>
+            <button mat-button (click)="logout()" routerLink="/"> Logout </button>
+        </ng-template>
     </mat-toolbar>
 </nav>
