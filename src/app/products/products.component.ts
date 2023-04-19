@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
+import { AuthService } from '../auth.service';
+import { Account } from '../model/account';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,20 +15,28 @@ export class ProductsComponent implements OnInit {
 
   products: Product[];
   private cart: [Product, number][];
+  private account: Account | null = null;
 
-  constructor(private productService: ProductService, private cartService: CartService) {
+  constructor(private productService: ProductService, private cartService: CartService, private authService: AuthService, private router: Router) {
     this.products = [];
     this.productService.getAllProducts()
-    .subscribe(products => this.products = products);
+      .subscribe(products => this.products = products);
     this.cart = [];
     this.cartService.cart$
       .subscribe(cart => this.cart = cart);
+    this.authService.loggedAccount$
+      .subscribe(account => this.account = account);
   }
 
   ngOnInit(): void {
   }
 
   public addToCart(product: Product) {
+    if(!this.account) {
+      this.router.navigate(["/login"]);
+      return;
+    }
+
     var index: number = -1;
     //Try and find if product is already in the cart
     for (let i = 0; i < this.cart.length; i++){

@@ -31,6 +31,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { CartTableComponent } from './cart-table/cart-table.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     OrderFormComponent,
     EditCartComponent,
     CartTableComponent,
-    PurchaseComponent
+    PurchaseComponent,
+    AdminOrdersComponent,
+    AdminProductsComponent
   ],
   imports: [
     HttpClientModule,

@@ -1,17 +1,26 @@
 <nav>
     <mat-toolbar color="primary">
         <button mat-flat-button color="accent" routerLink="/"> BANANA MOVE </button>
-        <button mat-button routerLink="/products"> Products </button>
-        <button mat-button routerLink="/feedback"> Feedback </button>
-        <button mat-button routerLink="/about-us"> About Us </button>
-        
-        <button mat-button routerLink="/purchase"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent" matBadgeSize="small">shopping_cart</mat-icon> </button>
+        <div *ngIf="loggedAccount?.type === 'Big Chungus'; else notAdmin">
+            <button mat-button routerLink="/admin/orders"> Orders </button>
+            <button mat-button routerLink="/admin/products"> Products </button>
+        </div>
+        <ng-template #notAdmin>
+            <button mat-button routerLink="/products"> Products </button>
+            <button mat-button routerLink="/feedback"> Feedback </button>
+            <button mat-button routerLink="/about-us"> About Us </button>
+
+            <div *ngIf="loggedAccount">
+            <button mat-button routerLink="/purchase"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent"
+                    matBadgeSize="small">shopping_cart</mat-icon> </button>
+            </div>
+        </ng-template>
 
         <span class="spacer"></span>
 
         <div *ngIf="!loggedAccount; else logoutBlock">
-        <button mat-button routerLink="/login"> Login </button>
-        <button mat-button routerLink="/register"> Register </button>
+            <button mat-button routerLink="/login"> Login </button>
+            <button mat-button routerLink="/register"> Register </button>
         </div>
         <ng-template #logoutBlock>
             <button mat-button (click)="logout()" routerLink="/"> Logout </button>

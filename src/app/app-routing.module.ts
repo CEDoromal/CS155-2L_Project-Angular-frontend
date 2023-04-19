@@ -6,6 +6,8 @@ import { RegisterComponent } from './register/register.component';
 import { ProductsComponent } from './products/products.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { PurchaseComponent } from './purchase/purchase.component';
+import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,7 +15,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'products', component: ProductsComponent },
   { path: 'feedback', component: FeedbackComponent},
-  { path: 'purchase', component: PurchaseComponent}
+  { path: 'purchase', component: PurchaseComponent},
+  { path: 'admin/products', component: AdminProductsComponent},
+  { path: 'admin/orders', component: AdminOrdersComponent}
 ];
 
 @NgModule({
