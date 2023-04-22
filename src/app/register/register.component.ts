@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
     confirmPassword: ['', [Validators.pattern("")]]
   });
 
-  constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private accountService: AccountService, private authService: AuthService) { 
+  constructor(private _formBuilder: FormBuilder, private _snackBar: MatSnackBar, private router: Router, private accountService: AccountService, private authService: AuthService) {
     accountService.getAllAccounts()
       .subscribe(accounts => {
         const usernameList: string[] = accounts.map(account => account.username);
@@ -48,30 +48,23 @@ export class RegisterComponent implements OnInit {
 
   register(): void {
     if (this.registrationForm.valid) {
-      let account = new Account();
-      account.username = this.registrationForm.controls["username"].value || "";
-      account.password = this.registrationForm.controls["password"].value || "";
-      account.type = "customer";
-      this.accountService.addAccount({
-        "username": this.registrationForm.controls["username"].value || "",
-        "password": this.registrationForm.controls["password"].value || "",
-        "type": "customer"
-      } as Account)
+      const newAccount: Account = new Account();
+      newAccount.username = this.registrationForm.controls["username"].value || "";
+      newAccount.password = this.registrationForm.controls["password"].value || "";
+      newAccount.type = "customer";
+      this.accountService.addAccount(newAccount)
         .subscribe(account => {
           if (account) {
             this.authService.setLoggedAccount(account);
-            this._snackBar.open("Registration Successful", "" , {
+            this._snackBar.open("Registration Successful", "", {
               duration: 1500
             });
             this.router.navigate(["/"]);
             return;
+          } else {
+            this._snackBar.open("Registration Failed", "", { duration: 1500 });
           }
         });
-    } else {
-      this._snackBar.open("Registration Failed", "", {
-        duration: 1500
-      });
     }
   }
-
 }

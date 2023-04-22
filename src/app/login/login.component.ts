@@ -32,13 +32,10 @@ export class LoginComponent implements OnInit {
               duration: 1500
             });
             this.router.navigate(["/"]);
-            return;
+          } else {
+            this._snackBar.open("Login Failed", "", { duration: 1500 })
           }
         });
-    } else {
-      this._snackBar.open("Login Failed", "", {
-        duration: 1500
-      });
     }
   }
 }
