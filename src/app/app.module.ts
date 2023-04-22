@@ -35,6 +35,7 @@ import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { DisqusModule } from 'ngx-disqus';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatRadioModule,
     MatSnackBarModule,
     MatTooltipModule,
-    MatSelectModule
+    MatSelectModule,
+    DisqusModule.forRoot('disqus_shortname')
   ],
   providers: [],
   bootstrap: [AppComponent]
