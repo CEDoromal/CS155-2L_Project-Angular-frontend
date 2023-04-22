@@ -76,7 +76,7 @@ import { DisqusModule } from 'ngx-disqus';
     MatSnackBarModule,
     MatTooltipModule,
     MatSelectModule,
-    DisqusModule.forRoot('disqus_shortname')
+    DisqusModule.forRoot('cs155-2l-project')
   ],
   providers: [],
   bootstrap: [AppComponent]
