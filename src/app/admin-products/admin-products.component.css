@@ -1,3 +1,15 @@
+mat-card {
+    min-width: 58%;
+}
+
+table {
+    width: 100%;
+}
+
+button {
+    margin: 0 5px;
+}
+
 #admin-products-div {
     display: flex;
     justify-content: center;
@@ -22,6 +34,10 @@
 
 .mat-column-price {
     max-width: 100px;
+}
+
+.mat-column-actions {
+    padding: 0 30px;
 }
 
 

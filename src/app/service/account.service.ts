@@ -22,9 +22,9 @@ export class AccountService {
     return this.http.put("/api/accounts/update", account, this.httpOptions);
   }
 
-  public deleteAccount(id: number): void {
+  public deleteAccount(id: number): Observable<Account> {
     const url = `/api/accounts/delete/${id}`;
-    this.http.delete(url);
+    return this.http.delete<Account>(url, this.httpOptions);
   }
 
   public login(user: string, pass: string): Observable<Account> {

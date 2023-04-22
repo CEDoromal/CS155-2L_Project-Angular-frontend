@@ -40,7 +40,7 @@ export class ProductsComponent implements OnInit {
     var index: number = -1;
     //Try and find if product is already in the cart
     for (let i = 0; i < this.cart.length; i++){
-      if (this.cart[i][0].prod_id === product.prod_id) {
+      if (this.cart[i][0].prodId === product.prodId) {
         index = i; //Store the index where the product is located
         break;
       }

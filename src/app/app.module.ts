@@ -33,6 +33,8 @@ import { PurchaseComponent } from './purchase/purchase.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
     MatStepperModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
