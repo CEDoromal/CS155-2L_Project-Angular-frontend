@@ -27,8 +27,8 @@ export class S3Service {
       region: "auto",
       endpoint: `https://${ACCOUNT_ID}.r2.cloudflarestorage.com`,
       credentials: {
-        accessKeyId: environment.ACCESS_KEY_ID || "",
-        secretAccessKey: environment.SECRET_ACCESS_KEY || "",
+        accessKeyId: environment.R2_ACCESS_KEY_ID,
+        secretAccessKey: environment.R2_SECRET_ACCESS_KEY
       },
     });
   }
@@ -64,16 +64,6 @@ export class S3Service {
 
     try {
       const preSignedURL = await getSignedUrl(this.s3, command, { expiresIn: 3600});
-
-      //const s3Url = preSignedURL.replace(/^(?:https?:\/\/)?(?:[^@\/\n]+@)?(?:www\.)?([^\/\n]+)/igm, "/s3api")
-      /*
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Access-Control-Allow-Origin': 'http://localhost:4200',
-          'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-        })
-      };
-      */
       
       this.http.put(preSignedURL, file).subscribe({
         next: (res) => {

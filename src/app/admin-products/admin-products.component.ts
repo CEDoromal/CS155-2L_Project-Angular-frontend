@@ -52,28 +52,17 @@ export class AdminProductsComponent implements OnInit {
 
     const imageInput = <HTMLInputElement>document.getElementById("productImage" + index);
 
-    if (!imageInput.files) {
-      this.productService.updateProduct(product)
-        .subscribe(dbProduct => {
-          this.products.data[index] = dbProduct;
-          this.formGroups[index] = this.generateFormGroup(this.products.data[index]);
-        });
-    } else {
+    if (imageInput.files) {
       const image = imageInput.files[0];
       product.image = image.name;
-      this.s3Service.uploadFileWithPreSignedURL(image).then(() => {
-
-        this.productService.addProduct(product)
-          .subscribe(dbProduct => {
-            this.products.data.push(dbProduct);
-            this.products.data = [...this.products.data];
-            this.formGroups.push(this.generateFormGroup(dbProduct));
-          });
-
-      }).catch((error) => console.log(error));
+      this.s3Service.uploadFileWithPreSignedURL(image)
     }
 
-
+    this.productService.updateProduct(product)
+      .subscribe(dbProduct => {
+        this.products.data[index] = dbProduct;
+        this.formGroups[index] = this.generateFormGroup(this.products.data[index]);
+      });
 
   }
 
@@ -94,9 +83,9 @@ export class AdminProductsComponent implements OnInit {
   }
 
   addProduct() {
-    if (!this.newProductForm.valid) { return; }
-
     const imageInput = <HTMLInputElement>document.getElementById("newProductImage");
+
+    if (!this.newProductForm.valid) { return; }
 
     if (!imageInput.files) { return; }
 
@@ -107,16 +96,14 @@ export class AdminProductsComponent implements OnInit {
     product.price = Number(this.newProductForm.controls["price"].value);
     product.image = image.name;
 
-    this.s3Service.uploadFileWithPreSignedURL(image).then(() => {
+    this.s3Service.uploadFileWithPreSignedURL(image);
 
-      this.productService.addProduct(product)
-        .subscribe(dbProduct => {
-          this.products.data.push(dbProduct);
-          this.products.data = [...this.products.data];
-          this.formGroups.push(this.generateFormGroup(dbProduct));
-        });
-
-    }).catch((error) => console.log(error));
+    this.productService.addProduct(product)
+      .subscribe(dbProduct => {
+        this.products.data.push(dbProduct);
+        this.products.data = [...this.products.data];
+        this.formGroups.push(this.generateFormGroup(dbProduct));
+      });
   }
 
 }
