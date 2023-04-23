@@ -11,6 +11,7 @@
             <button mat-button routerLink="/about-us"> About Us </button>
 
             <div *ngIf="loggedAccount">
+            <button mat-button routerLink="/orders"> Orders </button>
             <button mat-button routerLink="/purchase"> <mat-icon [matBadge]="badgeContent" matBadgeColor="accent"
                     matBadgeSize="small">shopping_cart</mat-icon> </button>
             </div>

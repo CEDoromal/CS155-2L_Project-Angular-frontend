@@ -1,0 +1,44 @@
+mat-card {
+    min-width: 58%;
+}
+
+table {
+    width: 100%;
+}
+
+button {
+    margin: 0 5px;
+}
+
+#orders-div {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+#name-form-field {
+    width: 90%;
+}
+
+#price-form-field {
+    width: 60%;
+}
+
+.mat-column-id {
+    min-width: 40px;
+}
+
+.mat-column-product {
+    min-width: 300px;
+}
+
+.mat-column-price {
+    max-width: 100px;
+}
+
+.mat-column-actions {
+    padding: 0 30px;
+}
+
+
+

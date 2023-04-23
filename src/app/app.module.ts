@@ -36,6 +36,7 @@ import { AdminProductsComponent } from './admin-products/admin-products.componen
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { DisqusModule } from 'ngx-disqus';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DisqusModule } from 'ngx-disqus';
     CartTableComponent,
     PurchaseComponent,
     AdminOrdersComponent,
-    AdminProductsComponent
+    AdminProductsComponent,
+    OrdersComponent
   ],
   imports: [
     HttpClientModule,

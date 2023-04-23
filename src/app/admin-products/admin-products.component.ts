@@ -3,6 +3,7 @@ import { Product } from '../model/product';
 import { ProductService } from '../service/product.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { S3Service } from '../s3.service';
 
 @Component({
   selector: 'app-admin-products',
@@ -24,7 +25,7 @@ export class AdminProductsComponent implements OnInit {
   })
 
 
-  constructor(private productService: ProductService, private formBuilder: FormBuilder) {
+  constructor(private productService: ProductService, private formBuilder: FormBuilder, private s3Service: S3Service) {
     this.productService.getAllProducts()
       .subscribe(products => {
         this.products.data = products;
@@ -37,11 +38,10 @@ export class AdminProductsComponent implements OnInit {
 
   generateFormGroup(product: Product): FormGroup<any> {
     return this.formBuilder.group({
-        //prodId: [product.prodId, Validators.required],
-        name: [product.name, Validators.required],
-        price: [product.price, Validators.required],
-        image: [product.image, Validators.required]
-      });
+      //prodId: [product.prodId, Validators.required],
+      name: [product.name, Validators.required],
+      price: [product.price, Validators.required]
+    });
   }
 
   updateProduct(product: Product, index: number) {
@@ -49,12 +49,32 @@ export class AdminProductsComponent implements OnInit {
 
     product.name = this.formGroups[index].controls["name"].value;
     product.price = this.formGroups[index].controls["price"].value;
-    product.image = this.formGroups[index].controls["image"].value;
-    this.productService.updateProduct(product)
-      .subscribe(dbProduct => {
-        this.products.data[index] = dbProduct;
-        this.formGroups[index] = this.generateFormGroup(this.products.data[index]);
-      });
+
+    const imageInput = <HTMLInputElement>document.getElementById("productImage" + index);
+
+    if (!imageInput.files) {
+      this.productService.updateProduct(product)
+        .subscribe(dbProduct => {
+          this.products.data[index] = dbProduct;
+          this.formGroups[index] = this.generateFormGroup(this.products.data[index]);
+        });
+    } else {
+      const image = imageInput.files[0];
+      product.image = image.name;
+      this.s3Service.uploadFileWithPreSignedURL(image).then(() => {
+
+        this.productService.addProduct(product)
+          .subscribe(dbProduct => {
+            this.products.data.push(dbProduct);
+            this.products.data = [...this.products.data];
+            this.formGroups.push(this.generateFormGroup(dbProduct));
+          });
+
+      }).catch((error) => console.log(error));
+    }
+
+
+
   }
 
   resetProduct(product: Product, index: number) {
@@ -67,7 +87,7 @@ export class AdminProductsComponent implements OnInit {
 
   deleteProduct(product: Product, index: number) {
     if (!this.formGroups[index].valid) { return; }
-    
+
     this.productService.deleteProduct(product.prodId).subscribe();
     this.products.data = this.products.data.filter(p => p.prodId !== product.prodId);
     this.formGroups.splice(index, 1);
@@ -76,17 +96,27 @@ export class AdminProductsComponent implements OnInit {
   addProduct() {
     if (!this.newProductForm.valid) { return; }
 
+    const imageInput = <HTMLInputElement>document.getElementById("newProductImage");
+
+    if (!imageInput.files) { return; }
+
+    const image = imageInput.files[0];
+
     const product: Product = new Product();
     product.name = this.newProductForm.controls["name"].value || "";
     product.price = Number(this.newProductForm.controls["price"].value);
-    product.image = this.newProductForm.controls["image"].value || "";
+    product.image = image.name;
 
-    this.productService.addProduct(product)
-      .subscribe(dbProduct => {
-        this.products.data.push(dbProduct);
-        this.products.data = [...this.products.data];
-        this.formGroups.push(this.generateFormGroup(dbProduct));
-      })
+    this.s3Service.uploadFileWithPreSignedURL(image).then(() => {
+
+      this.productService.addProduct(product)
+        .subscribe(dbProduct => {
+          this.products.data.push(dbProduct);
+          this.products.data = [...this.products.data];
+          this.formGroups.push(this.generateFormGroup(dbProduct));
+        });
+
+    }).catch((error) => console.log(error));
   }
 
 }

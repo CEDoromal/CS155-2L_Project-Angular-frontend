@@ -1,8 +1,10 @@
 {
-   "/api": {
-     "target": "https://cs155-2l-project-backend.onrender.com",
-     "secure": false,
-     "pathRewrite": {"^/api": ""},
-     "changeOrigin": true
-   }
- }
+  "/api": {
+    "target": "https://cs155-2l-project-backend.onrender.com",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

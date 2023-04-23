@@ -8,12 +8,14 @@ import { FeedbackComponent } from './feedback/feedback.component';
 import { PurchaseComponent } from './purchase/purchase.component';
 import { AdminProductsComponent } from './admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin-orders/admin-orders.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'products', component: ProductsComponent },
+  { path: 'products', component: ProductsComponent},
+  { path: 'orders', component: OrdersComponent},
   { path: 'feedback', component: FeedbackComponent},
   { path: 'purchase', component: PurchaseComponent},
   { path: 'admin/products', component: AdminProductsComponent},
