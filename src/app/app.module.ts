@@ -37,6 +37,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
 import { DisqusModule } from 'ngx-disqus';
 import { OrdersComponent } from './orders/orders.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { OrdersComponent } from './orders/orders.component';
     MatSnackBarModule,
     MatTooltipModule,
     MatSelectModule,
-    DisqusModule.forRoot('cs155-2l-project')
+    DisqusModule.forRoot('cs155-2l-project'),
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

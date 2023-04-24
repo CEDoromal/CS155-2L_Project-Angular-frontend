@@ -1,0 +1,77 @@
+#home-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+.big-text {
+    font-size: 48px; 
+    font-family: 'Catamaran', Sans-serif; 
+    font-weight: bold;
+}
+
+.landingText h1{
+    font-size: 48px;
+    margin: 0 !important;
+    color: #B66A40;
+    font-family: 'Catamaran', Sans-serif;
+    padding-left: 55px;
+    padding-right: 55px;
+    position: relative;
+    right: 100px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.landingText h3{
+    margin: 12px !important;
+    font-family: 'Merriweather Sans', Sans-serif;
+    font-size: 16px;
+    opacity: 0.8;
+    line-height: 25px;
+    position: relative;
+    right: 100px;
+    color: #000;
+    padding-left: 60px;
+    padding-right: 70px;
+    text-align: center;
+}
+
+.landingText img{
+    padding-left: 10px;
+    position: relative;
+    right: 110px;
+    width: 6vw;
+}
+
+.landingText .btn{
+    width: 250px;
+    margin-top: 30px;
+    padding: 14px 20px 14px 20px;
+    background-color: #EDC95D;
+    position: relative;
+    right: 110px;
+    border-radius: 45px;
+    text-align: center
+}
+
+.landingText .btn:hover{
+    background-color: #a16b54;
+}
+
+.landingText .btn a{
+    font-size: 1.2vw;
+    font-family: 'Catamaran', Sans-serif;
+    color: #a16b54;
+    text-decoration: none;
+}
+
+.landingText .btn a:hover{
+    color: #EDC95D;
+}
+
+.landingImage img{
+    width: 24vw;
+}

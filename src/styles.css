@@ -4,10 +4,16 @@ html, body { height: 100%; }
 body { 
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
-    background-color: #FFECB3;
+    background-color: #fefbe9;
 }
 
 
 .spacer {
     flex: 1 1 auto;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }

@@ -1,0 +1,52 @@
+mat-grid-list {
+    width: 75%;
+}
+
+mat-tab-group {
+    width: 100%;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.row {
+    flex-direction: row;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+.self-center {
+    align-self: center;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#map-card {
+    width: 75%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
+
+#shipping-card {
+    margin: 30px;
+}

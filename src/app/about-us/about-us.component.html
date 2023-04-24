@@ -1,1 +1,114 @@
-<p>about-us works!</p>
+<mat-tab-group>
+    <mat-tab label="How It Started">
+        <div class="flex row" style="padding: 30px">
+            <div class="flex column" style="padding: 30px">
+                <h1 class="self-center"> How It Started </h1>
+                <p>
+                    A single mother of 3 was exhausted from the profession of Dentistry and thought about joining the
+                    business world in the Philippines.
+                    She discovered various sweet pastries that piqued her interest in baking as her passion.
+                    Perfecting the Chocolate Ganache for the Dream Cake and along with the Revel Bar that can stand
+                    against famous brands.
+                </p>
+            </div>
+            <mat-card style="max-width: 500px; max-height: 500px;">
+                <img src="assets/images/p1.png">
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Visit Our Shop">
+        <div class="flex column align-items-center" style="padding: 30px">
+            <h1> Visit Our Shop </h1>
+            <h2> We have homebased pop-up bakery that opens occassionally. Visit us! </h2>
+            <h3> 261 A.B Cruz, Kalawakan, Pasig City, Metro Manila, Philippines </h3>
+            <h3> info@rillagorilla.nl for retailers </h3>
+
+            <mat-card id="map-card">
+                <mat-card-content>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.8877152449736!2d121.0816719!3d14.5484131!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c6299a2946eb%3A0xfb43551b493e7683!2s261%20A.B%20Cruz%2C%20Pasig%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1675068953304!5m2!1sen!2sph"
+                        width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </mat-tab>
+    <mat-tab label="Contact Details">
+        <div class="flex column align-items-center" style="padding: 30px">
+            <h1> Contact Details </h1>
+            <h3> Any questions about our yummy desserts? Or do you just want to say hi?</h3>
+            <h1> - </h1>
+            <h1> Call us on </h1>
+            <h2> +63 928-563-3374 </h2>
+            <h3> (available every weekdays and Saturday between 9:00 am and 9:00 pm) </h3>
+            <h1> - </h1>
+            <h1> Check out our Instagram </h1>
+            <a mat-fab href="https://www.instagram.com/banana.move/">
+                <mat-icon>
+                    camera_alt
+                </mat-icon>
+            </a>
+        </div>
+    </mat-tab>
+    <mat-tab label="Payment Methods">
+        <div class="flex column align-items-center" style="padding: 30px">
+            <h1> Payment Methods </h1>
+            <h3> We accept several payment methods </h3>
+            <mat-grid-list cols="5">
+                <mat-grid-tile>
+                    <img src="/assets/images/visa.png">
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <img src="/assets/images/gcash.png">
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <mat-card>
+                        <mat-card-content>
+                            <h1> Cash On Delivery </h1>
+                        </mat-card-content>
+                    </mat-card>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <img src="/assets/images/paymaya.png">
+                </mat-grid-tile>
+                <mat-grid-tile>
+                    <img src="/assets/images/mastercard.png">
+                </mat-grid-tile>
+            </mat-grid-list>
+            <h2> Not the one you want to use? </h2>
+            <h3> Just let us know and we'll see what we can do for you </h3>
+        </div>
+    </mat-tab>
+    <mat-tab label="Shipping Details">
+        <div class="flex column align-items-center" style="padding: 30px">
+            <h1> Shipping Details </h1>
+            <h3> Our orders will be shipped by Lalamove, so we're sure our products will arrive safely and timely </h3>
+            <mat-card id="shipping-card">
+                <table>
+                    <tr>
+                        <th colspan="2"><b>D E L I V E R Y &nbsp; I N F O &nbsp; & &nbsp; R A T E S </b></th>
+                    </tr>
+                    <tr>
+                        <td>TYPE:</td>
+                        <td>Motorcycle</td>
+                    </tr>
+                    <tr>
+                        <td> PRICE: </td>
+                        <td>&#8369; 49 Base Fare (+ &#8369; 6 per KM for 0-5 KM and + &#8369; 5 per KM after 5 KM) </td>
+                    </tr>
+                    <tr>
+                        <td> ADD STOP: </td>
+                        <td>&#8369; 40 per stop</td>
+                    </tr>
+                    <tr>
+                        <td>WEIGHT LIMIT: </td>
+                        <td>up to 20 KG</td>
+                    </tr>
+                </table>
+            </mat-card>
+            
+            <h2> Remarks </h2>
+            <h3 style="max-width: 50%;"> Please note that the pricing of some service vehicle types are based on multiple factors like order volume and driver availability. The total price of these service vehicle types may vary and can be higher or lower than the ones stated above. </h3>
+        </div>
+    </mat-tab>
+</mat-tab-group>
